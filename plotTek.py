@@ -9,16 +9,16 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-r', '--run', type=str, default = "000")
 args = parser.parse_args()
 run = args.run
-dir = "./"
+dir = "./data/TB3/run"+run+"/"
 prefix = "Tek"+run+"_004_ch"
 
 for i in range(1,9):
     ans = tek.read_wfm(dir+prefix+str(i)+".wfm")
     vs = ans[0]
     ts = np.linspace( ans[1], ans[2], len(vs) )
-    plt.figure()
+    fig = plt.figure()
     plt.plot(ts,vs)
-    fig.SaveAs
+    fig.savefig("run"+run+"wfm"+str(i)+".png")
 plt.show()
 input("press any key to close")
 plt.close('all')
